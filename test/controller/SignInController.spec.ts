@@ -19,4 +19,16 @@ describe('SignInController', () => {
 
         expect(result.statusCode).toBe(400);
     });
+
+    it('Should return status code 400 if no password is provided', async () => {
+        const httpRequest = {
+            body: {
+                user: 'user_password'
+            }
+        };
+
+        const result = await sut.handle(httpRequest);
+
+        expect(result.statusCode).toBe(400);
+    });
 });
