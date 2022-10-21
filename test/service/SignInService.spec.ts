@@ -39,11 +39,24 @@ describe('SignInService', () => {
     it('Should return true when login is valid', async () => {
         const login = {
             user: 'any_user',
-            password: 'any_password_err'
+            password: 'any_password'
         }
 
         const result = await sut.execute(login);
 
         expect(result).toBeTruthy();
     });
+
+    it('Should return false when not found login', async () => {
+        jest.spyOn(signInRepository, 'find').mockImplementationOnce(() => Promise.resolve(null) as any)
+
+        const login = {
+            user: 'any_user',
+            password: 'any_password_err'
+        }
+
+        const result = await sut.execute(login);
+
+        expect(result).toBeFalsy();
+    })
 });
