@@ -16,7 +16,7 @@ describe('SignInService', () => {
 
     it('Should return false when user is invalid', async () => {
         const login = {
-            user: 'any_user',
+            user: 'any_user_err',
             password: 'any_password'
         }
 
@@ -24,4 +24,15 @@ describe('SignInService', () => {
 
         expect(result).toBeFalsy();
     });
-})
+
+    it('Should return false when password is invalid', async () => {
+        const login = {
+            user: 'any_user',
+            password: 'any_password_err'
+        }
+
+        const result = await sut.execute(login);
+
+        expect(result).toBeFalsy();
+    });
+});

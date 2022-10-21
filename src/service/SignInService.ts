@@ -8,9 +8,11 @@ export class SignInService implements SignInServiceInterface {
     async execute(login: Login): Promise<boolean> {
         const findLogin = await this.repository.find(login);
 
-        if (login.user !== findLogin.user) {
+        if (login.user !== findLogin.user || login.password !== findLogin.password) {
             return false
         }
+
+        return Promise.resolve(true)
     }
 
 }
