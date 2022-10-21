@@ -49,4 +49,18 @@ describe('SignInController', () => {
 
         expect(result.statusCode).toBe(200);
     });
+
+    it('Should return status code 401 if login invalid', async () => {
+        jest.spyOn(signInService, 'execute').mockImplementationOnce(() => Promise.resolve(false))
+        const httpRequest = {
+            body: {
+                user: 'any_user',
+                password: 'any_password'
+            }
+        };
+
+        const result = await sut.handle(httpRequest);
+
+        expect(result.statusCode).toBe(401);
+    });
 });

@@ -18,8 +18,8 @@ export class SignInController implements Controller {
 
         if (loginIsValid) {
             return { statusCode: 200 }
+        } else {
+            return { statusCode: 401 }
         }
-
-        return {} as any
     }
 }
