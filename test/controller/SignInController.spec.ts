@@ -1,16 +1,21 @@
 import { SignInController } from '../../src/controllers/SignInController';
+import { Controller } from '../../src/controllers/Controller';
 
 describe('SignInController', () => {
-    it('Should return status code 400 if no user is provided', async () => {
-        const controller = new SignInController();
+    let sut: Controller;
 
+    beforeEach(() => {
+        sut = new SignInController();
+    });
+
+    it('Should return status code 400 if no user is provided', async () => {
         const httpRequest = {
             body: {
                 password: 'any_password'
             }
         };
 
-        const result = await controller.handle(httpRequest);
+        const result = await sut.handle(httpRequest);
 
         expect(result.statusCode).toBe(400);
     });
