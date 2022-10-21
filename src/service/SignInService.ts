@@ -12,7 +12,7 @@ export class SignInService implements SignInServiceInterface {
             return false
         }
 
-        return Promise.resolve(true)
+        return true
     }
 
 }

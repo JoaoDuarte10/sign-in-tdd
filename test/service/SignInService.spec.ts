@@ -35,4 +35,15 @@ describe('SignInService', () => {
 
         expect(result).toBeFalsy();
     });
+
+    it('Should return true when login is valid', async () => {
+        const login = {
+            user: 'any_user',
+            password: 'any_password_err'
+        }
+
+        const result = await sut.execute(login);
+
+        expect(result).toBeTruthy();
+    });
 });
