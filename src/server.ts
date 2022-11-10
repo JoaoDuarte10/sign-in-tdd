@@ -4,10 +4,9 @@ import { adaptRoute } from './AdaptRoute';
 import { makeSignInController } from './factory/SignInController';
 
 const app = express();
+const router = Router();
 
 app.use(express.json());
-
-const router = Router();
 
 router.post('/sign-in', adaptRoute(makeSignInController()));
 

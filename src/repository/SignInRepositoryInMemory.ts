@@ -18,6 +18,6 @@ export class SignInRepositoryInMemory implements SignInRepository {
     ];
 
     async find(params: Login): Promise<Login> {
-        return Promise.resolve(this.login.find(login => login.user === params.user && login.password === params.password))
+        return Promise.resolve(this.login.find(login => login.user === params.user || login.password === params.password))
     }
 }
